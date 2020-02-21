@@ -38,3 +38,8 @@ export const Input = styled.input`
     margin-top: 0px;
   }
 `;
+
+export const Counter = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
