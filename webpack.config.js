@@ -1,33 +1,33 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: ["babel-polyfill", "./src/index.js"]
+    app: ['babel-polyfill', './index.tsx'],
   },
   output: {
-    path: path.join(__dirname, "/dist"),
-    filename: "index_bundle.js"
+    path: path.join(__dirname, '/dist'),
+    filename: 'index_bundle.js',
   },
   module: {
     rules: [
       {
         test: /\.(ts|tsx|js)$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
-    ]
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"]
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html"
-    })
-  ]
+      template: './index.html',
+    }),
+  ],
 };
