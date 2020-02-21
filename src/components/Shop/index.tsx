@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export const Shop = () => {
   return (
     <>
-      <h1>Shop</h1>
+      <h1>Shops</h1>
     </>
   );
 };
