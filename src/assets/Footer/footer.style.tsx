@@ -4,7 +4,7 @@ export const FooterZone = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #240540;
+  background: #169c9e;
   border-bottom: 1px #ff8b38 solid;
   padding-top: 20px;
   color: gray;

@@ -9,13 +9,33 @@ export const Shop = () => {
         <CreateProductForm>
           <Input type="text" placeholder="Product name" />
           <Input type="text" placeholder="Product price" />
-          <Counter />
+          <Counter>
+            <i>-</i>
+            <p>1</p>
+            <i>+</i>
+          </Counter>
           <button>Select type</button>
           <button type="submit">Add to list</button>
         </CreateProductForm>
         <ProductList>
-          <ListItem>11</ListItem>
-          <ListItem>11</ListItem>
+          <ListItem>
+            <h3>Buy apples</h3>
+            <Counter>
+              <i>-</i>
+              <p>1</p>
+              <i>+</i>
+            </Counter>
+            <p>Total: 10$</p>
+          </ListItem>
+          <ListItem>
+            <h3>Buy apples</h3>
+            <Counter>
+              <i>-</i>
+              <p>1</p>
+              <i>+</i>
+            </Counter>
+            <p>Total: 10$</p>
+          </ListItem>
         </ProductList>
       </OrderZone>
       <h1>Shops</h1>
