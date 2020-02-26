@@ -12,9 +12,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx|js)$/,
+        test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+      },
+      {
+        test: /\.(ts|tsx|js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'awesome-typescript-loader',
       },
       {
         test: /\.css$/,

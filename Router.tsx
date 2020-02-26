@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shop } from './src/components/Shop/index';
+import Shop from './src/components/Shop/index';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { Wrapper } from './app.style';
