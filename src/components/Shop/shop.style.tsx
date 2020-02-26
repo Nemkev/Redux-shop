@@ -29,7 +29,8 @@ export const ListItem = styled.li`
   align-items: center;
   justify-content: center;
   width: 30vw;
-  height: 10vh;
+  border-radius: 3px;
+  min-height: 13vh;
   background: #344a5d;
   margin-top: 10px;
   &:first-child {
@@ -43,11 +44,16 @@ export const Input = styled.input`
   background: #344a5d;
   color: #e6e6e6;
   border: none;
+  height: 32px;
   padding: 4px;
   border-radius: 3px;
   &:first-child {
     margin-top: 0px;
   }
+`;
+
+export const ChooseButton = styled.button`
+  border-radius: 50%;
 `;
 
 export const Counter = styled.div`
@@ -57,15 +63,38 @@ export const Counter = styled.div`
   margin-top: 10px;
   border-radius: 3px;
   margin-bottom: 10px;
-  min-height: 40px;
   width: 100px;
   background: #344a5d;
   flex-direction: row;
   align-items: center;
+  min-height: 40px;
   justify-content: center;
 `;
 
 export const CounterValue = styled.p`
   margin-left: 10px;
   margin-right: 10px;
+  font-size: 1.3em;
+`;
+
+export const Plus = styled.i`
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 1.3em;
+`;
+
+export const Minus = styled.i`
+  margin-right: 10px;
+  font-size: 1.3em;
+  cursor: pointer;
+`;
+
+export const AddButton = styled.button`
+  border: none;
+  width: 100px;
+  min-height: 40px;
+  border-radius: 3px;
+  background: #344a5d;
+  color: black;
+  cursor: pointer;
 `;
