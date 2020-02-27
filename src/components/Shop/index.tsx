@@ -128,7 +128,7 @@ const Shop: React.FC<ShopProps> = props => {
                     +
                   </Plus>
                 </Counter>
-                <p>Price: {el.price * props.count}</p>
+                <p>Price: {el.totalProductPrice}</p>
               </ListItem>
             ),
           )}

@@ -3,8 +3,8 @@ import { ActionTypes, IState, Actions } from '../types/index';
 const initalState: IState = {
   count: 0,
   messages: [
-    { id: 1, name: 'Potato', price: 15, counter: 1, totalProductPrice: 0 },
-    { id: 2, name: 'Onions', price: 11, counter: 1, totalProductPrice: 0 },
+    { id: 1, name: 'Potato', price: 15, counter: 0, totalProductPrice: 0 },
+    { id: 2, name: 'Onions', price: 11, counter: 0, totalProductPrice: 0 },
   ],
   totalPrice: 0,
 };
@@ -41,12 +41,27 @@ export const reducer = (state: IState = initalState, action: Actions) => {
     case ActionTypes.INCREMENT_CURRENT_PRODUCT_COUNTER: {
       const currentItem = state.messages.find(el => el.id === action.payload);
       console.log(currentItem);
-      if (currentItem !== undefined)
+      if (currentItem !== undefined) {
+        currentItem.counter = currentItem.counter + 1;
+        currentItem.totalProductPrice = currentItem.counter * currentItem.price;
         return {
           ...state,
-          messages: [...state.messages, currentItem],
+          messages: [...state.messages],
         };
+      }
     }
+    case ActionTypes.TOTAL_PRICE: {
+      let count = 0;
+      const arrOfMessageSize = state.messages.length;
+      for (let i = 0; i < arrOfMessageSize; i++) {
+        count += state.messages[i].totalProductPrice;
+      }
+      return {
+        ...state,
+        totalPrice: count,
+      };
+    }
+
     // case ActionTypes.INCREMENT_CURRENT_PRODUCT_COUNTER: {
     //   const currentItem = state.messages.find(el => el.id === action.payload);
     //   return {
