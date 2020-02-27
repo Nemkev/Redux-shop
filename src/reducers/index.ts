@@ -32,12 +32,6 @@ export const reducer = (state: IState = initalState, action: Actions) => {
         count: state.count - action.payload,
       };
     }
-    case ActionTypes.TOTAL_PRICE: {
-      return {
-        ...state,
-        totalPrice: state.totalPrice + action.payload,
-      };
-    }
     case ActionTypes.INCREMENT_CURRENT_PRODUCT_COUNTER: {
       const currentItem = state.messages.find(el => el.id === action.payload);
       console.log(currentItem);

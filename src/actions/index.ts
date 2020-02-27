@@ -34,9 +34,8 @@ export const decrement = (payload: number): IDecrement => ({
   payload,
 });
 
-export const changeTotalPrice = (payload: number): ITotalPrice => ({
+export const changeTotalPrice = (): ITotalPrice => ({
   type: ActionTypes.TOTAL_PRICE,
-  payload,
 });
 
 export const incrementCurrentProductCounter = (payload: number): IIncrementCurrentProductCounter => ({

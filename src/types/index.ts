@@ -46,7 +46,6 @@ export interface IRemoveProductFromCard {
 
 export interface ITotalPrice {
   type: ActionTypes.TOTAL_PRICE;
-  payload: number;
 }
 
 export type Actions = IAddLine | IDeleteLine | IIncrement | IDecrement | ITotalPrice | IIncrementCurrentProductCounter;
