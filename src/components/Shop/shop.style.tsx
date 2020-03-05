@@ -48,6 +48,25 @@ export const TotalPrice = styled.p`
   margin-left: 5px;
 `;
 
+export const TypeProductBar = styled.div<{ showType?: boolean }>`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 30vw;
+  color: white;
+  display: ${props => (props.showType ? 'flex' : 'none')};
+`;
+
+export const SelectType = styled.button`
+  border: none;
+  width: 100px;
+  min-height: 40px;
+  border-radius: 3px;
+  background: #344a5d;
+  color: black;
+  cursor: pointer;
+`;
+
 export const Input = styled.input`
   margin-top: 10px;
   width: 30vw;

@@ -23,6 +23,7 @@ import {
   Minus,
   AddButton,
   TotalPrice,
+  TypeProductBar,
 } from './shop.style';
 import { IState } from '../../types/index';
 interface ShopProps extends IState {
@@ -40,18 +41,20 @@ type State = {
   price: number;
   counter: number;
   totalProductPrice: number;
+  showType: boolean;
 };
 
-type Action = { name: string } | { price: number };
+type Action = { name: string } | { price: number } | { showType: boolean };
 
 const Shop: React.FC<ShopProps> = props => {
-  const [{ name, price, counter, totalProductPrice }, setState] = useReducer(
+  const [{ name, price, counter, totalProductPrice, showType }, setState] = useReducer(
     (s: State, a: Action) => ({ ...s, ...a }),
-    { name: '', price: 0, counter: 0, totalProductPrice: 0 },
+    { name: '', price: 0, counter: 0, totalProductPrice: 0, showType: false },
   );
   const handleChange = ({ target: { value, name } }: React.ChangeEvent<HTMLInputElement>) => {
     setState({ [name]: value } as any);
   };
+  console.log(showType);
 
   return (
     <Overlap>
@@ -78,6 +81,20 @@ const Shop: React.FC<ShopProps> = props => {
               +
             </Plus>
           </Counter>
+          <AddButton
+            onClick={e => {
+              e.preventDefault();
+              showType === true ? setState({ showType: false }) : setState({ showType: true });
+            }}
+          >
+            Select type
+          </AddButton>
+          <TypeProductBar showType={showType}>
+            <p>Hell</p>
+            <p>Hell</p>
+            <p>Hell</p>
+            <p>Hell</p>
+          </TypeProductBar>
           <AddButton
             onClick={e => {
               e.preventDefault();
