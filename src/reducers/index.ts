@@ -34,7 +34,6 @@ export const reducer = (state: IState = initalState, action: Actions) => {
     }
     case ActionTypes.INCREMENT_CURRENT_PRODUCT_COUNTER: {
       const currentItem = state.messages.find(el => el.id === action.payload);
-      console.log(currentItem);
       if (currentItem !== undefined) {
         currentItem.counter = currentItem.counter + 1;
         currentItem.totalProductPrice = currentItem.counter * currentItem.price;
@@ -42,6 +41,19 @@ export const reducer = (state: IState = initalState, action: Actions) => {
           ...state,
           messages: [...state.messages],
         };
+      }
+    }
+    case ActionTypes.DECREMENT_CURRENT_PRODUCT_COUNTER: {
+      const currentItem = state.messages.find(el => el.id === action.payload);
+      if (currentItem !== undefined) {
+        if (currentItem.counter !== 0) {
+          currentItem.counter = currentItem.counter - 1;
+          currentItem.totalProductPrice = currentItem.counter * currentItem.price;
+          return {
+            ...state,
+            messages: [...state.messages],
+          };
+        }
       }
     }
     case ActionTypes.TOTAL_PRICE: {

@@ -7,6 +7,7 @@ export enum ActionTypes {
   DECREMENT = 'DECREMENT',
   TOTAL_PRICE = 'TOTAL_PRICE',
   INCREMENT_CURRENT_PRODUCT_COUNTER = 'INCREMENT_CURRENT_PRODUCT_COUNTER',
+  DECREMENT_CURRENT_PRODUCT_COUNTER = 'DECREMENT_CURRENT_PRODUCT_COUNTER',
 }
 
 export interface IAddLine {
@@ -39,6 +40,11 @@ export interface IIncrementCurrentProductCounter {
   payload: number;
 }
 
+export interface IDecrementCurrentProductCounter {
+  type: ActionTypes.DECREMENT_CURRENT_PRODUCT_COUNTER;
+  payload: number;
+}
+
 export interface IRemoveProductFromCard {
   type: ActionTypes.REMOVE_PRODUCT_FROM_CARD;
   payload: number;
@@ -48,7 +54,14 @@ export interface ITotalPrice {
   type: ActionTypes.TOTAL_PRICE;
 }
 
-export type Actions = IAddLine | IDeleteLine | IIncrement | IDecrement | ITotalPrice | IIncrementCurrentProductCounter;
+export type Actions =
+  | IAddLine
+  | IDeleteLine
+  | IIncrement
+  | IDecrement
+  | ITotalPrice
+  | IIncrementCurrentProductCounter
+  | IDecrementCurrentProductCounter;
 
 export interface IState {
   readonly count: number;

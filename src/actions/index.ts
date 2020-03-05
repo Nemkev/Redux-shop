@@ -6,6 +6,7 @@ import {
   IDecrement,
   ITotalPrice,
   IIncrementCurrentProductCounter,
+  IDecrementCurrentProductCounter,
 } from '../types/index';
 
 export const addProduct = (payload: {
@@ -40,5 +41,10 @@ export const changeTotalPrice = (): ITotalPrice => ({
 
 export const incrementCurrentProductCounter = (payload: number): IIncrementCurrentProductCounter => ({
   type: ActionTypes.INCREMENT_CURRENT_PRODUCT_COUNTER,
+  payload,
+});
+
+export const decrementCurrentProductCounter = (payload: number): IDecrementCurrentProductCounter => ({
+  type: ActionTypes.DECREMENT_CURRENT_PRODUCT_COUNTER,
   payload,
 });

@@ -1,7 +1,15 @@
 import React, { useReducer } from 'react';
 import * as Redux from 'redux';
 import { connect } from 'react-redux';
-import { addProduct, deleteProduct, increment, decrement, incrementCurrentProductCounter } from '../../actions/index';
+import {
+  addProduct,
+  deleteProduct,
+  increment,
+  decrement,
+  incrementCurrentProductCounter,
+  changeTotalPrice,
+  decrementCurrentProductCounter,
+} from '../../actions/index';
 import {
   Overlap,
   OrderZone,
@@ -14,56 +22,33 @@ import {
   Plus,
   Minus,
   AddButton,
+  TotalPrice,
 } from './shop.style';
 import { IState } from '../../types/index';
-// import { withRouter } from 'react-router-dom';
-
-// interface ProductData {
-//   id: number;
-//   name: string;
-//   price: number;
-// }
-// interface Props {
-//   messages: { id: number; name: string }[];
-//   name: string;
-// }
-
-// interface Product {
-//   name: string;
-//   price: number;
-//   total: number;
-//   id: string;
-// }
-
-// interface State {
-//   name: string;
-//   price: number;
-// }
-
-// interface StateProps {
-//   count: number;
-//   messages: [];
-// }
-
-// interface Dispatch {}
-
 interface ShopProps extends IState {
   addProduct: (value: any) => any;
   deleteProduct: (value: any) => any;
   decrement: (value: any) => any;
   increment: (value: any) => any;
+  decrementCurrentProductCounter: (value: any) => any;
   incrementCurrentProductCounter: (value: any) => any;
+  changeTotalPrice: () => any;
 }
 
 type State = {
   name: string;
   price: number;
+  counter: number;
+  totalProductPrice: number;
 };
 
 type Action = { name: string } | { price: number };
 
 const Shop: React.FC<ShopProps> = props => {
-  const [{ name, price }, setState] = useReducer((s: State, a: Action) => ({ ...s, ...a }), { name: '', price: 0 });
+  const [{ name, price, counter, totalProductPrice }, setState] = useReducer(
+    (s: State, a: Action) => ({ ...s, ...a }),
+    { name: '', price: 0, counter: 0, totalProductPrice: 0 },
+  );
   const handleChange = ({ target: { value, name } }: React.ChangeEvent<HTMLInputElement>) => {
     setState({ [name]: value } as any);
   };
@@ -93,11 +78,16 @@ const Shop: React.FC<ShopProps> = props => {
               +
             </Plus>
           </Counter>
-          {/* <AddButton>Add to list</AddButton> */}
           <AddButton
             onClick={e => {
               e.preventDefault();
-              props.addProduct({ id: props.messages.length + 1, name, price });
+              props.addProduct({
+                id: props.messages.length + 1,
+                name,
+                price,
+                counter: props.count,
+                totalProductPrice: counter * price,
+              });
             }}
           >
             Add to list
@@ -112,7 +102,8 @@ const Shop: React.FC<ShopProps> = props => {
                   <Minus
                     onClick={e => {
                       e.preventDefault();
-                      // props.decrement(1);
+                      props.decrementCurrentProductCounter(el.id);
+                      props.changeTotalPrice();
                     }}
                   >
                     -
@@ -121,8 +112,8 @@ const Shop: React.FC<ShopProps> = props => {
                   <Plus
                     onClick={e => {
                       e.preventDefault();
-                      // props.increment(1);
                       props.incrementCurrentProductCounter(el.id);
+                      props.changeTotalPrice();
                     }}
                   >
                     +
@@ -134,7 +125,7 @@ const Shop: React.FC<ShopProps> = props => {
           )}
         </ProductList>
       </OrderZone>
-      <p>Total price: {props.totalPrice}</p>
+      <TotalPrice>Total price: {props.totalPrice}</TotalPrice>
     </Overlap>
   );
 };
@@ -149,6 +140,8 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
   decrement: (count: number) => dispatch(decrement(count)),
   increment: (count: number) => dispatch(increment(count)),
   incrementCurrentProductCounter: (id: number) => dispatch(incrementCurrentProductCounter(id)),
+  decrementCurrentProductCounter: (id: number) => dispatch(decrementCurrentProductCounter(id)),
+  changeTotalPrice: () => dispatch(changeTotalPrice()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Shop);

@@ -38,6 +38,16 @@ export const ListItem = styled.li`
   }
 `;
 
+export const TotalPrice = styled.p`
+  padding: 3px;
+  background: #344a5d;
+  border-radius: 3px;
+  display: flex;
+  min-width: 100px;
+  max-width: 120px;
+  margin-left: 5px;
+`;
+
 export const Input = styled.input`
   margin-top: 10px;
   width: 30vw;
