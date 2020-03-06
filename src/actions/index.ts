@@ -7,6 +7,8 @@ import {
   ITotalPrice,
   IIncrementCurrentProductCounter,
   IDecrementCurrentProductCounter,
+  ILOAD_DATA,
+  IPutData,
 } from '../types/index';
 
 export const addProduct = (payload: {
@@ -46,5 +48,14 @@ export const incrementCurrentProductCounter = (payload: number): IIncrementCurre
 
 export const decrementCurrentProductCounter = (payload: number): IDecrementCurrentProductCounter => ({
   type: ActionTypes.DECREMENT_CURRENT_PRODUCT_COUNTER,
+  payload,
+});
+
+export const loadData = (): ILOAD_DATA => ({
+  type: ActionTypes.LOAD_DATA,
+});
+
+export const putData = (payload: any): IPutData => ({
+  type: ActionTypes.PUT_DATA,
   payload,
 });

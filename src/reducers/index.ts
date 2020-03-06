@@ -1,4 +1,5 @@
 import { ActionTypes, IState, Actions } from '../types/index';
+// import { takeEvery } from 'redux-saga/effects';
 
 const initalState: IState = {
   count: 0,
@@ -67,6 +68,8 @@ export const reducer = (state: IState = initalState, action: Actions) => {
         totalPrice: count,
       };
     }
+    // case ActionTypes.LOAD_DATA: {
+    // }
 
     // case ActionTypes.INCREMENT_CURRENT_PRODUCT_COUNTER: {
     //   const currentItem = state.messages.find(el => el.id === action.payload);

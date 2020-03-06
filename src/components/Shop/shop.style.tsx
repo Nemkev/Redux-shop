@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+// import apple from '../../assets/images/apple.svg';
+
 export const Overlap = styled.div`
   min-height: 100vh;
   background: #181818;
@@ -53,8 +55,32 @@ export const TypeProductBar = styled.div<{ showType?: boolean }>`
   justify-content: space-between;
   align-items: center;
   min-width: 30vw;
+  padding: 6px;
+  border-radius: 3px;
+  margin: 10px 0px;
+  background: #344a5d;
   color: white;
   display: ${props => (props.showType ? 'flex' : 'none')};
+`;
+
+export const ProductFishButton = styled.button`
+  border: 0px;
+  border-radius: 50%;
+`;
+
+export const ProductSweetButton = styled.button`
+  border: 0px;
+  border-radius: 50%;
+`;
+
+export const ProductVegetableButton = styled.button`
+  border: 0px;
+  border-radius: 50%;
+`;
+
+export const ProductFruitButton = styled.button`
+  border: 0px;
+  border-radius: 50%;
 `;
 
 export const SelectType = styled.button`
@@ -121,6 +147,7 @@ export const Minus = styled.i`
 export const AddButton = styled.button`
   border: none;
   width: 100px;
+  margin-top: 10px;
   min-height: 40px;
   border-radius: 3px;
   background: #344a5d;

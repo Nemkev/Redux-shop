@@ -16,6 +16,10 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+      // {
+      //   test: /\.svg$/,
+      //   loader: 'svg-inline-loader',
+      // },
       {
         test: /\.(ts|tsx|js|jsx)$/,
         exclude: /node_modules/,
@@ -25,6 +29,41 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.svg$/,
+        loader: 'url-loader',
+      },
+      {
+        test: /\.(ttf|eot|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+        loader: 'file-loader',
+      },
+      // {
+      //   test: /\.svg$/,
+      //   loader: 'react-svg-loader',
+      // },
+      // {
+      //   test: /\.svg$/,
+      //   loader: 'url-loader',
+      // },
+      // {
+      //   test: /\.svg$/,
+      //   loader: 'svg-url-loader',
+      // },
+      // {
+      //   test: /\.svg$/,
+      //   use: [
+      //     'babel-loader',
+      //     {
+      //       loader: 'react-svg-loader',
+      //       options: {
+      //         svgo: {
+      //           plugins: [{ removeTitle: false }],
+      //           floatPrecision: 2,
+      //         },
+      //       },
+      //     },
+      //   ],
+      // },
     ],
   },
   resolve: {
