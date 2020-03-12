@@ -41,4 +41,13 @@ describe('testReducers', () => {
       messages: [...initalState.messages],
     });
   });
+
+  it('decrement before zero banned', () => {
+    const state = reducer(initalState, t.decrement(2));
+
+    expect(state).toEqual({
+      ...initalState,
+      count: 0,
+    });
+  });
 });
