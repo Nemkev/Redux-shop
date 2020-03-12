@@ -1,7 +1,7 @@
 import { ActionTypes, IState, Actions } from '../types/index';
 // import { takeEvery } from 'redux-saga/effects';
 
-const initalState: IState = {
+export const initalState: IState = {
   count: 0,
   messages: [
     { id: 1, name: 'Potato', price: 15, counter: 0, totalProductPrice: 0 },
