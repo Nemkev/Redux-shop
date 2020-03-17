@@ -28,21 +28,15 @@ export const reducer = (state: IState = initalState, action: Actions) => {
       };
     }
     case ActionTypes.DECREMENT: {
-      if (state.count !== 0 && state.count >= action.payload) {
-        return {
-          ...state,
-          count: state.count - action.payload,
-        };
-      } else {
-        return {
-          ...state,
-          count: 0,
-        };
-      }
+      return {
+        ...state,
+        count: state.count !== 0 && state.count >= action.payload ? state.count - action.payload : 0,
+      };
     }
     case ActionTypes.INCREMENT_CURRENT_PRODUCT_COUNTER: {
       const currentItem = state.messages.find(el => el.id === action.payload);
-      if (currentItem !== undefined) {
+
+      if (currentItem) {
         currentItem.counter = currentItem.counter + 1;
         currentItem.totalProductPrice = currentItem.counter * currentItem.price;
         return {
@@ -53,7 +47,7 @@ export const reducer = (state: IState = initalState, action: Actions) => {
     }
     case ActionTypes.DECREMENT_CURRENT_PRODUCT_COUNTER: {
       const currentItem = state.messages.find(el => el.id === action.payload);
-      if (currentItem !== undefined) {
+      if (currentItem) {
         if (currentItem.counter !== 0) {
           currentItem.counter = currentItem.counter - 1;
           currentItem.totalProductPrice = currentItem.counter * currentItem.price;
@@ -75,16 +69,6 @@ export const reducer = (state: IState = initalState, action: Actions) => {
         totalPrice: count,
       };
     }
-    // case ActionTypes.LOAD_DATA: {
-    // }
-
-    // case ActionTypes.INCREMENT_CURRENT_PRODUCT_COUNTER: {
-    //   const currentItem = state.messages.find(el => el.id === action.payload);
-    //   return {
-    //     ...state,
-    //     messages: currentItem!.counter = currentItem!.counter + 1,
-    //   };
-    // }
     default:
       return state;
   }
